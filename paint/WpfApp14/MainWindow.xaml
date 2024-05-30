@@ -1,0 +1,240 @@
+﻿<Window x:Class="WpfApp14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp14"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Background="AliceBlue" Grid.Column="0" Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="15"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Margin="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid x:Name="penG" Grid.Column="0" Grid.Row="0">
+                    <Image Margin="1" Source="/images/pen.jpg" MouseLeftButtonUp="Image_MouseLeftButtonUp" Stretch="Fill"></Image>
+                </Grid>
+                <Grid x:Name="bucketG" Grid.Column="1" Grid.Row="0">
+                    <Image Margin="1" Source="/images/bucket.jpg" MouseLeftButtonUp="Image_MouseLeftButtonUp" Stretch="Fill"></Image>
+                </Grid>
+                <Grid x:Name="gumkaG" Grid.Column="0" Grid.Row="1">
+                    <Image Margin="1" Source="/images/gumka.jpg" MouseLeftButtonUp="Image_MouseLeftButtonUp" Stretch="Fill"></Image>
+                </Grid>
+                <Grid x:Name="pipG" Grid.Column="1" Grid.Row="1">
+                    <Image Margin="1" Source="/images/pipe.jpg" MouseLeftButtonUp="Image_MouseLeftButtonUp" Stretch="Fill"></Image>
+                </Grid>
+            </Grid>
+
+            <Slider x:Name="alpha"  Grid.Row="0" Grid.Column="2" VerticalAlignment="Center" Maximum="255" Value="255" SmallChange="1"></Slider>
+            
+            <Button x:Name="butSize" Grid.Row="0" Grid.Column="3" Margin="5" Click="butSize_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="/images/size.jpg"></ImageBrush>
+                </Button.Background>
+            </Button>
+            <Popup x:Name="popUpSize" IsOpen="False" Placement="Mouse" AllowsTransparency="True">
+                <Slider x:Name="sliderSize" Height="20" Width="200" Margin="5" Minimum="1" Maximum="20" Value="2" SmallChange="1"/>
+            </Popup>
+
+            <Grid Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Button Name="colorB1" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="5" Padding="5" Click="colorB_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="Black" x:Name="FcolorB"></SolidColorBrush>
+                    </Button.Background>
+                </Button>
+                <Button Name="colorB2" Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Margin="5" Padding="5" Click="colorB_Click">
+                    <Button.Background>
+                        <SolidColorBrush Color="White" x:Name="ScolorB"></SolidColorBrush>
+                    </Button.Background>
+                </Button>
+                <Grid x:Name="gridColors" IsEnabled="False" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="7" Grid.RowSpan="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="RGBB" Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="5" Click="RGBB_Click">
+                        <Button.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="Red" Offset="0.00"></GradientStop>
+                                <GradientStop Color="OrangeRed" Offset="0.25"></GradientStop>
+                                <GradientStop Color="Green" Offset="0.5"></GradientStop>
+                                <GradientStop Color="LightBlue" Offset="0.75"></GradientStop>
+                                <GradientStop Color="Blue" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Button.Background>
+                    </Button>
+                    <Popup x:Name="popUpColor" IsOpen="False" Placement="Mouse" AllowsTransparency="True">
+                        <StackPanel>
+                            <Slider x:Name="sliderCR" Height="20" Width="200" Margin="5" Minimum="1" Maximum="255" Value="0" SmallChange="1"/>
+                            <Slider x:Name="sliderCG" Height="20" Width="200" Margin="5" Minimum="1" Maximum="255" Value="0" SmallChange="1"/>
+                            <Slider x:Name="sliderCB" Height="20" Width="200" Margin="5" Minimum="1" Maximum="255" Value="0" SmallChange="1"/>
+                        </StackPanel>
+                    </Popup>
+                    <Grid Name="gridOcolor" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button Grid.Column="0" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Black"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Gray"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="2" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="DarkRed"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Red"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="4" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Orange"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="0" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Yellow"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="0" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="White"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="LightGray"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="2" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Brown"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="MistyRose"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="4" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Gold"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="1" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="LightYellow"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="0" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Green"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="1" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Lime"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="2" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Turquoise"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="3" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="LightBlue"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="4" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Blue"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                        <Button Grid.Column="5" Grid.Row="2" Margin="2" Click="ButtonClr_Click">
+                            <Button.Background>
+                                <SolidColorBrush Color="Indigo"></SolidColorBrush>
+                            </Button.Background>
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+
+
+            <TextBlock Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center">Tools</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2" HorizontalAlignment="Center">Colors</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center">Size</TextBlock>
+            <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center">Alpha</TextBlock>
+        </Grid>
+        <Canvas Grid.Column="0" Grid.Row="1" Background="White" x:Name="paint" MouseMove="paint_MouseMove" MouseDown="paint_MouseButtonDown"></Canvas>
+    </Grid>
+</Window>
